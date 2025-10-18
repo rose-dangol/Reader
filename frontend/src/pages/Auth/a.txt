@@ -1,0 +1,34 @@
+         {/* 
+         <div className="auth-tabs">
+            <button className='auth-tab active'>
+              Login
+            </button>
+            <button className='auth-tab active'>
+              Sign Up
+            </button>
+          </div> 
+          <form>
+              <h2 className="auth-title">Welcome Back</h2>
+              <div className="form-group">
+                <label className="form-label">Email or Username</label>
+                <input
+                  type="text"
+                  className="form-input"
+                  placeholder="Enter your email or username"
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label">Password</label>
+                <input
+                  type="password"
+                  className="form-input"
+                  placeholder="Enter your password"
+                  required
+                />
+              </div>
+              <button type="submit" className="btn btn-primary form-button">
+                Login
+              </button>
+            </form> 
+            */}
