@@ -28,8 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
-LOCAL_APPS=['users']
-THIRD_PARTY_APPS=[]
+LOCAL_APPS=['users','Books','Reviews','reader']
+THIRD_PARTY_APPS=['rest_framework','corsheaders','rest_framework_simplejwt','django_filters',]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -75,8 +76,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Reader',
+        'USER': 'rose',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -121,3 +126,30 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    # 'DEFAULT_THROTTLE_CLASSES': [
+    #     # 'rest_framework.throttling.AnonRateThrottle',
+    #     'rest_framework.throttling.ScopedRateThrottle',
+    #     # 'rest_framework.throttling.UserRateThrottle'
+    # ],
+    # 'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    # 'DEFAULT_THROTTLE_RATES': {
+    #     'anon': '1/day',
+    #     'user': '2/day',
+    #     'review-list':'3/day'
+    # }
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    # 'PAGE_SIZE': 2  #kati ota data dekhauni
+}
+# SIMPLE_JWT= {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(days=1)
+#
+# }
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
